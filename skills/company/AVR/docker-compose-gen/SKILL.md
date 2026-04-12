@@ -1,10 +1,17 @@
 ---
-name: docker-compose-gen
-description: Generate or update Docker Compose templates for avr-infra. Use when a new connector is added or a deployment configuration needs updating.
-license: MIT
+name: "docker-compose-gen"
+description: "Generate or update Docker Compose templates for avr-infra. Use when a new connector is added or a deployment configuration needs updating."
+slug: "docker-compose-gen"
+license: "MIT"
 metadata:
-  author: avr-company
   version: "1.0"
+  author: "avr-company"
+  paperclip:
+    slug: "docker-compose-gen"
+    skillKey: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/docker-compose-gen"
+  paperclipSkillKey: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/docker-compose-gen"
+  skillKey: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/docker-compose-gen"
+key: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/docker-compose-gen"
 ---
 
 # Docker Compose Generator Skill

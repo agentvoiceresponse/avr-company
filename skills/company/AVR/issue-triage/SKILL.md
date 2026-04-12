@@ -1,10 +1,17 @@
 ---
-name: issue-triage
-description: Categorize, label, and respond to new GitHub issues across AVR repositories. Use during every heartbeat to keep response time under 24 hours.
-license: MIT
+name: "issue-triage"
+description: "Categorize, label, and respond to new GitHub issues across AVR repositories. Use during every heartbeat to keep response time under 24 hours."
+slug: "issue-triage"
+license: "MIT"
 metadata:
-  author: avr-company
   version: "1.0"
+  author: "avr-company"
+  paperclip:
+    slug: "issue-triage"
+    skillKey: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/issue-triage"
+  paperclipSkillKey: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/issue-triage"
+  skillKey: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/issue-triage"
+key: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/issue-triage"
 ---
 
 # Issue Triage Skill

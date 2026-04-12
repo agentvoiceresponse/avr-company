@@ -1,10 +1,17 @@
 ---
-name: connector-scaffold
-description: Generate a new AVR connector repository from template. Use when the CEO assigns a new ASR, LLM, TTS, or STS provider to support.
-license: MIT
+name: "connector-scaffold"
+description: "Generate a new AVR connector repository from template. Use when the CEO assigns a new ASR, LLM, TTS, or STS provider to support."
+slug: "connector-scaffold"
+license: "MIT"
 metadata:
-  author: avr-company
   version: "1.0"
+  author: "avr-company"
+  paperclip:
+    slug: "connector-scaffold"
+    skillKey: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/connector-scaffold"
+  paperclipSkillKey: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/connector-scaffold"
+  skillKey: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/connector-scaffold"
+key: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/connector-scaffold"
 ---
 
 # Connector Scaffold Skill

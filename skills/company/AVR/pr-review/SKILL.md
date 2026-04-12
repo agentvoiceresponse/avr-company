@@ -1,10 +1,17 @@
 ---
-name: pr-review
-description: Review pull requests for code quality, API contract compliance, and AVR standards. Use when assigned a PR to review.
-license: MIT
+name: "pr-review"
+description: "Review pull requests for code quality, API contract compliance, and AVR standards. Use when assigned a PR to review."
+slug: "pr-review"
+license: "MIT"
 metadata:
-  author: avr-company
   version: "1.0"
+  author: "avr-company"
+  paperclip:
+    slug: "pr-review"
+    skillKey: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/pr-review"
+  paperclipSkillKey: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/pr-review"
+  skillKey: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/pr-review"
+key: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/pr-review"
 ---
 
 # PR Review Skill

@@ -1,10 +1,17 @@
 ---
-name: wiki-sync
-description: Detect documentation drift between repository READMEs and wiki.agentvoiceresponse.com pages. Use to keep the wiki accurate and current.
-license: MIT
+name: "wiki-sync"
+description: "Detect documentation drift between repository READMEs and wiki.agentvoiceresponse.com pages. Use to keep the wiki accurate and current."
+slug: "wiki-sync"
+license: "MIT"
 metadata:
-  author: avr-company
   version: "1.0"
+  author: "avr-company"
+  paperclip:
+    slug: "wiki-sync"
+    skillKey: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/wiki-sync"
+  paperclipSkillKey: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/wiki-sync"
+  skillKey: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/wiki-sync"
+key: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/wiki-sync"
 ---
 
 # Wiki Sync Skill
