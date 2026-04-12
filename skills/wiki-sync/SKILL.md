@@ -47,15 +47,16 @@ For each connector, find the corresponding `.md` file in `avr-docs` and compare:
 
 For any drift detected, or when creating documentation for a new connector:
 
-1. Edit or create the relevant `.md` file directly in the `avr-docs` repository
+1. Edit or create the relevant `.md` file in the `develop` branch of `avr-docs`
 2. Follow the standard page structure (see Docs agent HEARTBEAT Step 5)
 3. Commit with a clear message:
    ```
    docs({connector-name}): {brief description of what changed}
    ```
-4. Push to the `main` branch of `avr-docs`
+4. Push `develop` to remote
+5. Merge `develop` into `main` and push `main`
 
-Wiki.js will pick up the changes automatically from git.
+Wiki.js reads from `main` and picks up changes automatically. No PR needed for documentation changes.
 
 ### Step 4: Report
 
