@@ -38,6 +38,13 @@ Triage everything you find:
 - **Important** (roadmap decision, community PR waiting >24h): schedule this session
 - **Normal** (monitoring, planning): add to daily note for later
 
+**For every task you decide to work on this session:**
+Use the `paperclip` skill to add a comment immediately:
+> "Starting: [one sentence describing what you'll do and your approach]"
+
+If you are blocked and cannot start:
+> "Blocked: [what is missing and what you need to proceed]"
+
 ---
 
 ## Step 4 — Scan Community Health

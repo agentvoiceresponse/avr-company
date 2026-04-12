@@ -8,11 +8,6 @@
 - Manage the avr-docs repository
 - Update the .github org profile README
 
-### AVR Docs MCP Server (avr-docs-mcp)
-- Search and query the AVR wiki content
-- Update wiki pages programmatically
-- Check documentation coverage
-
 ### Web Search
 - Research documentation best practices
 - Check competitor documentation quality

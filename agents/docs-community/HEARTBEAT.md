@@ -29,6 +29,13 @@ Use the `para-memory-files` skill.
 - New tasks from CEO or Backend Developer/DevOps (documentation requests after merges)
 - Any PR review requests on avr-docs or the wiki
 
+**For every task you decide to work on this session:**
+Use the `paperclip` skill to add a comment immediately:
+> "Starting: [one sentence describing what you'll do and your approach]"
+
+If you are blocked and cannot start:
+> "Blocked: [what is missing and what you need to proceed]"
+
 **GitHub community scan (all AVR repositories, last 24h):**
 Use the `issue-triage` skill for every new unlabeled issue you find.
 
@@ -77,10 +84,19 @@ Fix high and medium priority drift in Step 5.
 
 ## Step 5 — Execute Documentation Work
 
+**How to publish to the wiki:**
+
+All wiki pages live in the `avr-docs` repository. Wiki.js reads directly from git.
+To publish a new page or update an existing one:
+1. Create or edit the `.md` file in `avr-docs`
+2. Commit: `docs({name}): {brief description}`
+3. Push to `main`
+That's it — Wiki.js picks it up automatically. Do NOT use avr-docs-mcp.
+
 **New connector documentation** (from Backend Developer handoff task):
 
-Create a new wiki page for the connector following this structure:
-```
+Create `avr-docs/{connector-name}.md` following this structure:
+```markdown
 ## {Provider Name} {Type}
 
 ### Overview
@@ -105,9 +121,11 @@ Brief description of the provider and what type of AI capability it provides.
 [Any provider-specific behavior, limitations, or tips]
 ```
 
+Commit and push to `avr-docs` main.
+
 **Wiki drift fix:**
-Update the wiki page to match the current connector README.
-Keep the wiki as the authoritative user-facing source.
+Edit the relevant `.md` file in `avr-docs`, commit, and push.
+Keep `avr-docs` as the authoritative user-facing source.
 Keep READMEs as developer-oriented quick-start guides.
 
 **Update provider compatibility matrix:**

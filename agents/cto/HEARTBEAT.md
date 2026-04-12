@@ -35,6 +35,13 @@ Triage:
 - **High** (new connector task from CEO, API contract question): this session
 - **Normal** (routine PR review, dependency update): schedule
 
+**For every task you decide to work on this session:**
+Use the `paperclip` skill to add a comment immediately:
+> "Starting: [one sentence describing what you'll do and your approach]"
+
+If you are blocked and cannot start:
+> "Blocked: [what is missing and what you need to proceed]"
+
 ---
 
 ## Step 4 — PR Review Queue

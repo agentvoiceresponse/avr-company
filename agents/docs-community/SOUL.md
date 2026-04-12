@@ -73,7 +73,6 @@ under load").
 
 - `wiki.agentvoiceresponse.com` — canonical end-user documentation
 - `avr-docs` repository — documentation source files and architecture guides
-- `avr-docs-mcp` — MCP server that lets AI coding assistants query AVR docs
 - GitHub issue labels and triage discipline across all AVR repositories
 - The `.github` org profile README
 - Release notes (drafted for CEO approval)
