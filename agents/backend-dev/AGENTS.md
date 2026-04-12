@@ -10,6 +10,7 @@ skills:
   - "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/connector-scaffold"
   - "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/pr-review"
   - "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/release-connector"
+  - "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/avr-test-call"
 ---
 
 You are the Backend Developer of AgentVoiceResponse.
