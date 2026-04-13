@@ -11,7 +11,7 @@
 | Content | Count |
 |---------|-------|
 | Agents | 5 |
-| Projects | 1 |
+| Projects | 2 |
 | Skills | 10 |
 
 ### Agents
@@ -26,6 +26,7 @@
 
 ### Projects
 
+- **avr-tts-cartesia**
 - **Onboarding**
 
 ### Skills
@@ -37,7 +38,7 @@
 | issue-triage | Categorize, label, and respond to new GitHub issues across AVR repositories. Use during every heartbeat to keep response time under 24 hours. | catalog |
 | pr-review | Review pull requests for code quality, API contract compliance, and AVR standards. Use when assigned a PR to review. | catalog |
 | release-connector | Release a new version of an AVR connector. Handles version bump, changelog, Docker image build, and npm publish. Use when CTO approves a release. | catalog |
-| wiki-sync | Detect documentation drift between repository READMEs and wiki.agentvoiceresponse.com pages. Use to keep the wiki accurate and current. | catalog |
+| wiki-sync | Detect documentation drift between repository READMEs and avr-docs pages, then commit and push updates to avr-docs so Wiki.js picks them up automatically. | catalog |
 | paperclip-create-agent | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/paperclip-create-agent) |
 | paperclip-create-plugin | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/paperclip-create-plugin) |
 | paperclip | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/paperclip) |
@@ -52,4 +53,4 @@ pnpm paperclipai company import this-github-url-or-folder
 See [Paperclip](https://paperclip.ing) for more information.
 
 ---
-Exported from [Paperclip](https://paperclip.ing) on 2026-04-12
+Exported from [Paperclip](https://paperclip.ing) on 2026-04-13

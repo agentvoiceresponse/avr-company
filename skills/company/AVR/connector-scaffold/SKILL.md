@@ -91,7 +91,7 @@ node_modules
 .git
 ```
 
-## Step 4d: GitHub Actions — Docker build & push
+## Step 4d: GitHub Actions — Version bump, Docker build & push
 
 Create `.github/workflows/main.yml` with this exact content, replacing `{type}` and `{provider}`:
 
@@ -107,24 +107,49 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2
+
+        # Bump patch version automatically
+        - name: bump version
+          id: bump-version
+          run: |
+            npm version patch --no-git-tag-v
+            echo "NEW_VERSION=$(jq -r '.version' package.json)" >> $GITHUB_OUTPUT
+
+        # Commit and push the version bump
+        - name: commit version bump
+          run: |
+            git config --global user.email "info@agentvoiceresponse.com"
+            git config --global user.name "AgentVoiceResponse"
+            git add package.json
+            git commit -m "chore: bump version to ${{ steps.bump-version.outputs.NEW_VERSION }}"
+            git push
+
         - name: login to docker hub
           id: docker-hub
           env:
             username: ${{secrets.DOCKERHUB_USERNAME}}
             password: ${{secrets.DOCKERHUB_PASSWORD}}
           run: docker login -u $username -p $password
+
         - name: get-npm-version
           id: package-version
           uses: martinbeentjes/npm-get-version-action@v1.3.1
+
         - name: build the docker image
           id: build-docker-image
           run: docker build -t agentvoiceresponse/avr-{type}-{provider}:latest -t agentvoiceresponse/avr-{type}-{provider}:${{ steps.package-version.outputs.current-version}} .
+
         - name: push the docker image
           id: push-docker-image
           run: docker push agentvoiceresponse/avr-{type}-{provider}:latest && docker push agentvoiceresponse/avr-{type}-{provider}:${{ steps.package-version.outputs.current-version}}
 ```
 
-The workflow triggers on every push to `main` and publishes both a versioned tag and `latest` to Docker Hub. Secrets `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD` are already configured at org level in GitHub.
+**How it works:**
+1. On every push to `main`, the workflow triggers
+2. `npm version patch` automatically increments the version (1.0.0 → 1.0.1)
+3. The version bump is committed and pushed back to main
+4. Docker image is built and pushed with both `latest` and versioned tags
+5. Secrets `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD` are configured at org level in GitHub
 
 ## Step 5: After Creation
 
