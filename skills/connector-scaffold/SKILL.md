@@ -29,13 +29,16 @@ Identify the type from the task description:
 ## Step 2: Create Repository Structure
 
 avr-{type}-{provider}/
-├── server.js          # Main Express.js or WebSocket server
-├── package.json       # Dependencies: express, dotenv, provider-sdk
-├── Dockerfile         # Based on node:lts-slim
-├── .env.example       # All required environment variables
-├── .gitignore         # node_modules, .env, etc.
-├── .dockerignore      # node_modules, .env, .git
-└── README.md          # Setup, env vars, API endpoint, Docker usage
+├── server.js                        # Main Express.js or WebSocket server
+├── package.json                     # Dependencies: express, dotenv, provider-sdk
+├── Dockerfile                       # Based on node:lts-slim
+├── .env.example                     # All required environment variables
+├── .gitignore                       # node_modules, .env
+├── .dockerignore                    # node_modules, .env, .git
+├── .github/
+│   └── workflows/
+│       └── main.yml                 # Docker build & push to Docker Hub on push to main
+└── README.md                        # Setup, env vars, API endpoint, Docker usage
 
 ## Step 3: Standard Server Template
 
@@ -72,6 +75,56 @@ COPY . .
 EXPOSE {port}
 CMD ["node", "server.js"]
 ```
+
+## Step 4b: .gitignore
+
+```
+node_modules
+.env
+```
+
+## Step 4c: .dockerignore
+
+```
+node_modules
+.env
+.git
+```
+
+## Step 4d: GitHub Actions — Docker build & push
+
+Create `.github/workflows/main.yml` with this exact content, replacing `{type}` and `{provider}`:
+
+```yaml
+name: Build Docker Image
+on:
+  push:
+    branches:
+      - main
+jobs:
+    build:
+      name: push docker image to docker hub
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - name: login to docker hub
+          id: docker-hub
+          env:
+            username: ${{secrets.DOCKERHUB_USERNAME}}
+            password: ${{secrets.DOCKERHUB_PASSWORD}}
+          run: docker login -u $username -p $password
+        - name: get-npm-version
+          id: package-version
+          uses: martinbeentjes/npm-get-version-action@v1.3.1
+        - name: build the docker image
+          id: build-docker-image
+          run: docker build -t agentvoiceresponse/avr-{type}-{provider}:latest -t agentvoiceresponse/avr-{type}-{provider}:${{ steps.package-version.outputs.current-version}} .
+        - name: push the docker image
+          id: push-docker-image
+          run: docker push agentvoiceresponse/avr-{type}-{provider}:latest && docker push agentvoiceresponse/avr-{type}-{provider}:${{ steps.package-version.outputs.current-version}}
+```
+
+The workflow triggers on every push to `main` and publishes both a versioned tag and `latest` to Docker Hub. Secrets `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD` are already configured at org level in GitHub.
 
 ## Step 5: After Creation
 

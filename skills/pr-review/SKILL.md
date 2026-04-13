@@ -31,11 +31,13 @@ key: "company/fd1d3622-4a13-43cb-b553-5a924b7693b4/pr-review"
 - [ ] STS connector: WebSocket at root, bidirectional PCM audio
 - [ ] X-UUID header handled correctly
 
-### Docker Standards
+### Docker & CI Standards
 - [ ] Dockerfile uses node:lts-slim base
 - [ ] .env.example includes all required variables
+- [ ] .gitignore contains `node_modules` and `.env`
 - [ ] .dockerignore excludes node_modules, .env, .git
-- [ ] Package.json has correct start script
+- [ ] `.github/workflows/main.yml` exists and references the correct image name (`agentvoiceresponse/avr-{type}-{provider}`)
+- [ ] Package.json has correct name, version, and start script
 
 ### Documentation
 - [ ] README updated with any new env vars or configuration changes
