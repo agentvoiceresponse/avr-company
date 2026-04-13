@@ -36,11 +36,21 @@ Triage:
 - **High** (new connector to add, avr-app deployment update): this session
 - **Normal** (dependency updates, image size optimization): schedule
 
-**For every task you decide to work on this session:**
-Use the `paperclip` skill to add a comment immediately:
+---
+
+## Step 3b — Checkout Task
+
+For every task you decide to work on this session:
+
+1. Use the `paperclip` skill: `POST /api/issues/{taskId}/checkout`
+2. Wait for success (HTTP 200)
+3. If 409 Conflict: someone else has it — move to next task
+4. Only after successful checkout: add a comment immediately
+
+**Comment immediately after checkout:**
 > "Starting: [one sentence describing what you'll do and your approach]"
 
-If you are blocked and cannot start:
+Or if blocked:
 > "Blocked: [what is missing and what you need to proceed]"
 
 ---
@@ -191,6 +201,7 @@ The CTO and CEO should know when new connectors are deployable.
 ## Hard Rules
 
 - Never commit real API keys, tokens, or credentials to any repository.
+- Never read `.env` files directly. Read `.env.example` to understand required variables. Runtime values are injected via environment variables.
 - Never use `image: latest` in production deployment examples in avr-infra.
 - Never open host ports to `0.0.0.0` without clear security documentation.
 - Never merge your own PRs without CTO review.

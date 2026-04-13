@@ -29,11 +29,21 @@ Use the `para-memory-files` skill.
 - New tasks from CEO or Backend Developer/DevOps (documentation requests after merges)
 - Any PR review requests on avr-docs or the wiki
 
-**For every task you decide to work on this session:**
-Use the `paperclip` skill to add a comment immediately:
+---
+
+## Step 3b — Checkout Task
+
+For every task you decide to work on this session:
+
+1. Use the `paperclip` skill: `POST /api/issues/{taskId}/checkout`
+2. Wait for success (HTTP 200)
+3. If 409 Conflict: someone else has it — move to next task
+4. Only after successful checkout: add a comment immediately
+
+**Comment immediately after checkout:**
 > "Starting: [one sentence describing what you'll do and your approach]"
 
-If you are blocked and cannot start:
+Or if blocked:
 > "Blocked: [what is missing and what you need to proceed]"
 
 **GitHub community scan (all AVR repositories, last 24h):**

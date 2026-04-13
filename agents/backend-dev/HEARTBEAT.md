@@ -35,11 +35,21 @@ Triage:
 - **High** (new connector task, bug affecting call quality): this session
 - **Normal** (minor bug fix, README update, dependency bump): schedule
 
-**For every task you decide to work on this session:**
-Use the `paperclip` skill to add a comment immediately:
+---
+
+## Step 3b — Checkout Task
+
+For every task you decide to work on this session:
+
+1. Use the `paperclip` skill: `POST /api/issues/{taskId}/checkout`
+2. Wait for success (HTTP 200)
+3. If 409 Conflict: someone else has it — move to next task
+4. Only after successful checkout: add a comment immediately
+
+**Comment immediately after checkout:**
 > "Starting: [one sentence describing what you'll do and your approach]"
 
-If you are blocked and cannot start:
+Or if blocked:
 > "Blocked: [what is missing and what you need to proceed]"
 
 ---
@@ -75,12 +85,17 @@ Always handle the X-UUID header for call correlation logging.
 Always handle `req.on('close', ...)` or WebSocket `close` events to clean up
 provider connections and prevent resource leaks.
 
-**4d. Write the README.**
-Before opening the PR:
-- Setup section with all required env vars (match `.env.example`)
-- Quick start with Docker and with `node server.js`
-- API endpoint documentation
-- Supported provider features (languages, voices, models if applicable)
+**4d. Pre-PR checklist — verify all files exist:**
+- [ ] `server.js` — main connector logic
+- [ ] `package.json` — with correct `name`, `version`, `main`, `scripts.start`
+- [ ] `Dockerfile` — `FROM node:lts-slim`
+- [ ] `.env.example` — all required environment variables
+- [ ] `.gitignore` — contains `node_modules` and `.env`
+- [ ] `.dockerignore` — contains `node_modules`, `.env`, `.git`
+- [ ] `.github/workflows/main.yml` — Docker build & push workflow with correct image name
+- [ ] `README.md` — setup, env vars, API endpoint, Docker usage
+
+Do not open the PR if any of these files is missing.
 
 **4e. Open the PR and notify CTO.**
 Create the PR on GitHub. Add a Paperclip comment on your task with:
@@ -145,6 +160,7 @@ Use `para-memory-files`:
 ## Hard Rules
 
 - Never commit secrets, API keys, or credentials to any repository.
+- Never read `.env` files directly. Read `.env.example` to understand required variables. Runtime values are injected via environment variables.
 - Never merge your own PRs — always wait for CTO review.
 - Never bypass or remove the X-UUID header handling from a connector.
 - Never write custom audio resampling — use `avr-resampler`.

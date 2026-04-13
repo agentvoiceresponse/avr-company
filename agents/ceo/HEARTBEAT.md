@@ -38,11 +38,21 @@ Triage everything you find:
 - **Important** (roadmap decision, community PR waiting >24h): schedule this session
 - **Normal** (monitoring, planning): add to daily note for later
 
-**For every task you decide to work on this session:**
-Use the `paperclip` skill to add a comment immediately:
+---
+
+## Step 3b — Checkout Task
+
+For every task you decide to work on this session:
+
+1. Use the `paperclip` skill: `POST /api/issues/{taskId}/checkout`
+2. Wait for success (HTTP 200)
+3. If 409 Conflict: someone else has it — move to next task
+4. Only after successful checkout: add a comment immediately
+
+**Comment immediately after checkout:**
 > "Starting: [one sentence describing what you'll do and your approach]"
 
-If you are blocked and cannot start:
+Or if blocked:
 > "Blocked: [what is missing and what you need to proceed]"
 
 ---
