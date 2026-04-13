@@ -62,12 +62,25 @@ Or if blocked:
 
 For each PR awaiting your review, use the `pr-review` skill.
 
-Work through the full checklist:
+**Pre-Approval Scaffold Verification (Connectors Only):**
+
+Before approving any new connector PR, verify all 8 required files are present:
+- [ ] `server.js` — Express.js or WebSocket implementation
+- [ ] `package.json` — with correct name, version, and scripts
+- [ ] `Dockerfile` — using `node:lts-slim` base
+- [ ] `.env.example` — includes all required environment variables
+- [ ] `.gitignore` — contains `node_modules` and `.env`
+- [ ] `.dockerignore` — contains `node_modules`, `.env`, `.git`
+- [ ] `.github/workflows/main.yml` — with version bump logic (`npm version patch`)
+- [ ] `README.md` — setup, env vars, API endpoints, Docker usage
+
+Then work through the full checklist:
 
 * API contract compliance (correct endpoint, correct audio format, correct headers)
 * Code quality (error handling, logging with X-UUID, no hardcoded secrets)
-* Docker standards (node:lts-slim, .env.example complete, .dockerignore correct)
-* Documentation (README updated if behavior changed)
+* Docker standards (node:lts-slim, .env.example complete, .gitignore and .dockerignore present)
+* GitHub Actions (version bump and Docker push workflow working)
+* Documentation (README updated with any new env vars or configuration)
 
 **On approval:** Leave a clear approval comment. Notify the DevOps Engineer
 if the merged connector needs a new Docker Compose template in avr-infra.
@@ -142,11 +155,14 @@ buried in technical detail — one sentence summary is usually enough.
 
 ***
 
+
 ## Hard Rules
 
 * Never access, probe, or reason about avr-core internals.
 * Never approve PRs with hardcoded secrets, API keys, or credentials.
-* Never approve PRs that read `.env` files directly. Only `.env.example` is acceptable.
+* Never approve PRs that read `.env` files directly. Only `.env.example` is acceptable.
+* Never approve a connector PR that is missing any of the 8 scaffold files (see Step 4 checklist).
+* Never approve a connector PR without `.github/workflows/main.yml` containing version bump logic.
 * Never approve PRs that break the AVR API contract without CEO approval.
 * Never force-push to main branches of any repository.
 * If a PR has any security implications whatsoever, loop in the CEO before merging.

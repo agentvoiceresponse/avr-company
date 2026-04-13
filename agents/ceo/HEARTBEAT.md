@@ -80,23 +80,26 @@ ping the CTO with a task.
 
 Work on the highest-priority item from Step 3 and Step 4.
 
+**Task Classification (before delegation):**
+
+For feature requests and new work, consider:
+- **Simple bug fix?** → Send directly to Backend Dev
+- **New config/API parameter added?** → Assess with CTO first (ask for design spec)
+- **New provider/connector?** → CTO feasibility assessment first
+- **Unsure?** → Error on the side of CTO review — it's faster to skip review than to redo Backend Dev work
+
 **Roadmap and planning tasks:**
-Use `para-memory-files` to retrieve the current roadmap document. Update it if
+Use `para-memory-files` to retrieve the current roadmap document. Update it if
 priorities have shifted based on new community signals. Delegate execution tasks
 to the appropriate agent with a well-scoped Paperclip issue.
 
 **Delegation checklist before creating any task:**
 
-*  Is the outcome clearly stated (not just the activity)?
-*  Does the assignee have all the context they need?
-*  Is there a definition of done?
-*  Is the priority level set?
-
-**Escalation to board:**
-If a decision meets the escalation criteria in your [SOUL.md](http://soul.md/), create a Paperclip
-issue tagged `board-decision-needed`, write a clear summary of the situation,
-your recommendation, and what you need approved. Do not proceed until approved.
-
+*  Is the outcome clearly stated (not just the activity)?
+*  Does the assignee have all the context they need?
+*  Is there a definition of done?
+*  Is the priority level set?
+*  (For features) Have I considered if CTO review is needed first?
 ***
 
 ## Step 6 — AVR Landscape Scan (weekly, on Mondays)

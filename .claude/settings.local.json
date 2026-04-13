@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -c \"Step 3b — Checkout Task\" /Users/giuseppe.careri/Sites/avr/avr-company/agents/*/HEARTBEAT.md)",
+      "Bash(grep -c \"Never read \\\\`.env\\\\` files directly\" /Users/giuseppe.careri/Sites/avr/avr-company/agents/*/HEARTBEAT.md)",
+      "Bash(sed -i '' '152,163d' /Users/giuseppe.careri/Sites/avr/avr-company/agents/backend-dev/HEARTBEAT.md)",
+      "Bash(/tmp/step7.txt:*)",
+      "Bash(sed -i '' '151r /tmp/step7.txt' /Users/giuseppe.careri/Sites/avr/avr-company/agents/backend-dev/HEARTBEAT.md)",
+      "Bash(git add:*)"
+    ]
+  }
+}

@@ -149,18 +149,26 @@ what you changed in response to each piece of feedback.
 
 ***
 
-## Step 7 — Post-Merge Handoff
+## Step 7 — Post-Merge Handoff (Mandatory)
 
-After a connector PR is merged:
+After a connector PR is merged, **you are not finished** until infrastructure and documentation are queued:
 
 1. Comment on the Paperclip task with:
-   * Merged connector name, version, and default port
-   * Complete list of required env vars from `.env.example`
-   * Docker image name (`agentvoiceresponse/avr-{type}-{provider}`)
-2. Create a Paperclip task for DevOps Engineer:
-   "Add `avr-{type}-{provider}` to avr-infra Docker Compose templates"
-3. Create a Paperclip task for Docs agent:
-   "Update wiki with new `avr-{type}-{provider}` connector documentation"
+   - Merged connector name, version, and default port
+   - Complete list of required env vars from `.env.example`
+   - Docker image name (`agentvoiceresponse/avr-{type}-{provider}`)
+
+2. **Create DevOps task** — required:
+   "Add `avr-{type}-{provider}` to avr-infra Docker Compose templates"
+   - Include: connector type, port, all env vars, image name, required version/tag
+
+3. **Create Docs task** — required:
+   "Update wiki with new `avr-{type}-{provider}` connector documentation"
+   - Include: link to README.md, list of env vars, usage examples
+
+**Important:** Do not consider your work complete until you have created both subtasks. Infrastructure and documentation must stay in sync with code changes. If you mark a task "completed" without creating these subtasks, you are leaving the project incomplete.
+
+***
 
 ***
 
